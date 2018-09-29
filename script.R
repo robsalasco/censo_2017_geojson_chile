@@ -25,10 +25,18 @@ lapply(data5, function(x) {simplygeojson(x, "Regiones", 0.2)})
 data6 <- lapply(paste0("R",sprintf("%02d",1:15)), function(x){read_sf(paste0("/Users/robsalasco/Documents/CENSO2017/Cartografia/",x,"/Distrito_Censal.shp"))})
 lapply(data6, function(x) {simplygeojson(x, "Distritos", 0.2)})
 
+
 chl <- lapply(paste0("R",sprintf("%02d",1:15)), function(x){read_sf(paste0("/Users/robsalasco/Documents/CENSO2017/Cartografia/",x,"/Comuna.shp"))})
 chl <- do.call(rbind, chl)
-s.chl <- ms_simplify(chl, keep=0.1)
-write_sf(s.chl, dsn = "chile.geojson", delete_dsn = FALSE)
+
+s.chl1 <- ms_simplify(chl, keep=0.001)
+write_sf(s.chl1, dsn = "Extras/CHILE1.geojson", delete_dsn = FALSE)
+
+s.chl2 <- ms_simplify(chl, keep=0.01)
+write_sf(s.chl2, dsn = "Extras/CHILE2.geojson", delete_dsn = FALSE)
+
+s.chl3 <- ms_simplify(chl, keep=0.1)
+write_sf(s.chl3, dsn = "Extras/CHILE3.geojson", delete_dsn = FALSE)
 
 
 
