@@ -1,6 +1,5 @@
 library(dplyr)
 library(sinimr)
-library(geojsonsf)
 library(sf)
 library(tmap)
 
